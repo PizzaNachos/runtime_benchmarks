@@ -1,0 +1,23 @@
+# Run timee benchmarks for http servers
+
+planning on benchmarking the following http servers 
+
+Java Quarkus
+Java Spring
+Rust Axum
+Rust Actix 
+Nodejs Express
+Nodejs Fastify 
+Go Gin
+
+
+Ideally using a combination of metrics
+- low compute vs med compute vs high compute
+- verifying a JWT
+- low vs med vs high blocking time (simulating a database call or other API call) 5ms - 100ms 
+- simple ping pong (test pure http implimentation)
+- JSON parsing 
+- low vs med vs high data using inside server, ex having to parse a 10k json object and sort through it and return certian stuff
+
+stuff into a docker continer to get CPU + Memory metrics out of 
+measure all response times and plot against the CPU + memory
