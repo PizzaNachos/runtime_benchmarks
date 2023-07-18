@@ -11,11 +11,14 @@ Nodejs Fastify
 Go Gin
 
 
+
+
 Ideally using a combination of metrics
 - low compute vs med compute vs high compute
 - verifying a JWT
 - low vs med vs high blocking time (simulating a database call or other API call) 5ms - 100ms 
 - simple ping pong (test pure http implimentation)
+- echo -> how it handles big bodies and memory
 - JSON parsing 
 - low vs med vs high data using inside server, ex having to parse a 10k json object and sort through it and return certian stuff
 

@@ -1,7 +1,7 @@
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let url = "http://127.0.0.1:3000/sleep/10";
-    let times = 10;
+    let url = "http://127.0.0.1:3000/sleep/100";
+    let times = 1;
     let threads = 1000;
 
     let mut tasks = vec![];
@@ -12,6 +12,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 let Ok(t) = time_response(url).await else {
                     continue;
                 };
+                // println!("{:?}", t);
+                assert!(t.1 == "100");
                 time += t.0;
             }
         

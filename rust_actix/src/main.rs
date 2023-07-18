@@ -5,6 +5,13 @@ async fn hello() -> impl Responder {
     HttpResponse::Ok().body("Hello world! -Actix")
 }
 
+#[get("/sleep/{delay}")]
+async fn sleep(delay: web::Path<u64>,) -> impl Responder {
+    tokio::time::sleep(std::time::Duration::from_millis(*delay )).await;
+    // return Ok(Json(delay));
+    HttpResponse::Ok().body((*delay).to_string())
+}
+
 #[post("/echo")]
 async fn echo(req_body: String) -> impl Responder {
     HttpResponse::Ok().body(req_body)
@@ -20,9 +27,10 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .service(hello)
             .service(echo)
+            .service(sleep)
             .route("/hey", web::get().to(manual_hello))
     })
-    .bind(("127.0.0.1", 8080))?
+    .bind(("127.0.0.1", 3000))?
     .run()
     .await
 }
